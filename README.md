@@ -33,7 +33,7 @@ Traditional education systems face significant scalability challenges:
 EternaLearn employs a multi-agent system that delivers:
 
 - **Personalized Explanations**: Content adapted to individual learning patterns
-- **Visual Learning Tools**: Auto-generated diagrams, concept maps, and flowcharts
+- **Visual Learning Tools:** Auto-generated diagrams, concept maps, and flowcharts
 - **Adaptive Assessments**: Dynamic difficulty adjustment based on performance
 - **Persistent Memory**: Cross-session progress tracking and recommendations
 - **Real-time Knowledge**: Google Search integration for current information
@@ -552,5 +552,5 @@ This project is licensed under the MIT License. See LICENSE file for complete te
 
 ## Demonstration
 
-**Video Walkthrough**: [3-Minute System Demo](https://youtube.com/your-demo-video)  
+**Video Walkthrough**: [3-Minute System Demo (under construction!)](https://youtube.com/your-demo-video)  
 Comprehensive demonstration of personalized explanations, adaptive assessments, and progress tracking capabilities.

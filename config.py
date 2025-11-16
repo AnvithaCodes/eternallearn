@@ -11,7 +11,7 @@ class Config:
     TEMPERATURE = 0.7
     MAX_TOKENS = 2048
     ENABLE_SEARCH = True
-    ENABLE_VISUAL_LEARNING = False #changes
+    ENABLE_VISUAL_LEARNING = True #changes
     MEMORY_BANK_PATH = "./data/memory_bank.json"
     SESSION_TIMEOUT_MINUTES = 30
     LOG_LEVEL = "INFO"

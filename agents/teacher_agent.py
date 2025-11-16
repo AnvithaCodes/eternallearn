@@ -1,7 +1,6 @@
 """Teacher Agent - Explains concepts"""
 import google.generativeai as genai
 from config import Config
-from tools.visual_tool import visual_tool
 import logging
 
 logger = logging.getLogger(__name__)
@@ -34,10 +33,14 @@ Keep it 200-300 words, conversational tone."""
             response = self.model.generate_content(prompt)
             explanation = response.text
             
-            # Add visual
+            # generate visual diagram for applicable topics
             if Config.ENABLE_VISUAL_LEARNING:
-                visual = visual_tool.generate_concept_map(topic, ["Concept 1", "Concept 2", "Concept 3"])
-                explanation += f"\n\n**Visual Aid:**\n{visual}"
+                visual_keywords = ["cycle", "process", "system", "photosynthesis", "respiration", 
+                                 "circuit", "ecosystem", "reaction", "structure", "mechanism"]
+                if any(keyword in topic.lower() for keyword in visual_keywords):
+                    diagram = self._generate_diagram(topic)
+                    if diagram:
+                        explanation += f"\n\n{diagram}"
             
             context["session"].current_topic = topic
             return explanation
@@ -45,5 +48,36 @@ Keep it 200-300 words, conversational tone."""
         except Exception as e:
             logger.error(f"Error: {e}")
             return f"I had trouble explaining {topic}. Could you rephrase your question?"
+    
+    def _generate_diagram(self, topic: str) -> str:
+        """Generate a Mermaid diagram for the topic"""
+        try:
+            prompt = f"""Create a simple Mermaid flowchart diagram for: {topic}
+
+Requirements:
+- Use Mermaid flowchart syntax (graph TD or graph LR)
+- 4-7 nodes maximum
+- Show key concepts and their relationships
+- Use arrows to show flow/connections
+- Keep it simple and educational
+
+Return ONLY the Mermaid code, no explanation, no markdown fences.
+Start with 'graph TD' or 'graph LR'."""
+
+            response = self.model.generate_content(prompt)
+            mermaid_code = response.text.strip()
+            
+            # clean up response
+            mermaid_code = mermaid_code.replace("```mermaid", "").replace("```", "").strip()
+            
+            # validate it starts with graph
+            if not (mermaid_code.startswith("graph ") or mermaid_code.startswith("flowchart ")):
+                return None
+            
+            return f"\n\n**Visual Diagram:**\n```mermaid\n{mermaid_code}\n```"
+            
+        except Exception as e:
+            logger.error(f"Diagram generation error: {e}")
+            return None
 
 teacher_agent = TeacherAgent()

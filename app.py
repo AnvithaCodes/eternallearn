@@ -63,7 +63,7 @@ app = EternaLearnWeb()
 def chat(message, history):
     return app.process_message(message, history)
 
-# simple interface
+# simple interface with Mermaid support
 demo = gr.ChatInterface(
     fn=chat,
     title="EternaLearn - AI Learning Companion",
@@ -71,7 +71,7 @@ demo = gr.ChatInterface(
     **Your adaptive learning assistant powered by multi-agent AI**
     
     **What I can do:**
-    - Explain any topic in detail
+    - Explain any topic in detail with visual diagrams
     - Generate personalized quizzes  
     - Track your learning progress
     
