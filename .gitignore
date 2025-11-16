@@ -1,9 +1,9 @@
-# Environment variables (NEVER commit API keys!)
+# environment variables
 .env
 .env.local
 .env.*
 
-# Python
+# python
 __pycache__/
 *.py[cod]
 *$py.class
@@ -17,7 +17,7 @@ env/
 ENV/
 *.log
 
-# Data files
+# data files
 data/
 *.json
 *.db
