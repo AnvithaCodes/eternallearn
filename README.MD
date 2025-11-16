@@ -441,10 +441,10 @@ docker run -it --env-file .env eternallearn
 ### Google Cloud Run Deployment
 
 ```bash
-# Build container image
+# build container image
 gcloud builds submit --tag gcr.io/PROJECT_ID/eternallearn
 
-# Deploy to Cloud Run
+# deploy to cloud run
 gcloud run deploy eternallearn \
   --image gcr.io/PROJECT_ID/eternallearn \
   --platform managed \
@@ -520,14 +520,14 @@ This project is licensed under the MIT License. See LICENSE file for complete te
 
 ## Team & Contact
 
-**Developer**: [Your Name]  
+**Developer**: Anvitha Bhat A
 **Program**: Google Agents Intensive (November 10-14, 2025)  
 **Track**: Agents for Good  
 
 **Contact Information**:
-- GitHub: [@YOUR_USERNAME](https://github.com/YOUR_USERNAME)
-- Email: your.email@example.com
-- LinkedIn: [Your Profile](https://linkedin.com/in/yourprofile)
+- GitHub: [@AnvithaCodes](https://github.com/AnvithaCodes)
+- Email: programmeranvi@gmail.com
+- LinkedIn: [Anvitha Bhat A](https://www.linkedin.com/in/anvitha-bhat-a-6425a3316/)
 
 ---
 
@@ -554,7 +554,3 @@ This project is licensed under the MIT License. See LICENSE file for complete te
 
 **Video Walkthrough**: [3-Minute System Demo](https://youtube.com/your-demo-video)  
 Comprehensive demonstration of personalized explanations, adaptive assessments, and progress tracking capabilities.
-
----
-
-**Last Updated**: November 16, 2025
