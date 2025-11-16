@@ -2,6 +2,7 @@
 import google.generativeai as genai
 from config import Config
 import logging
+import re
 
 logger = logging.getLogger(__name__)
 
@@ -52,32 +53,90 @@ Keep it 200-300 words, conversational tone."""
     def _generate_diagram(self, topic: str) -> str:
         """Generate a Mermaid diagram for the topic"""
         try:
-            prompt = f"""Create a simple Mermaid flowchart diagram for: {topic}
+            prompt = f"""Create a simple Mermaid flowchart for: {topic}
 
-Requirements:
-- Use Mermaid flowchart syntax (graph TD or graph LR)
-- 4-7 nodes maximum
-- Show key concepts and their relationships
-- Use arrows to show flow/connections
-- Keep it simple and educational
+CRITICAL RULES:
+1. Start with EXACTLY: graph TD
+2. Use this EXACT format for each line: A[Label] --> B[Label]
+3. Use only letters A-Z for node IDs
+4. Put labels in square brackets: [Label Text]
+5. Use --> for arrows
+6. Maximum 6 nodes
+7. No special characters in labels (avoid quotes, apostrophes)
 
-Return ONLY the Mermaid code, no explanation, no markdown fences.
-Start with 'graph TD' or 'graph LR'."""
+Example format:
+graph TD
+A[Start] --> B[Process]
+B --> C[End]
+
+Return ONLY the Mermaid code, nothing else."""
 
             response = self.model.generate_content(prompt)
             mermaid_code = response.text.strip()
             
-            # clean up response
             mermaid_code = mermaid_code.replace("```mermaid", "").replace("```", "").strip()
+            mermaid_code = mermaid_code.replace("flowchart TD", "graph TD")
+            mermaid_code = mermaid_code.replace("flowchart LR", "graph LR")
             
-            # validate it starts with graph
-            if not (mermaid_code.startswith("graph ") or mermaid_code.startswith("flowchart ")):
-                return None
+            lines = mermaid_code.split('\n')
+            cleaned_lines = []
+            for line in lines:
+                line = line.strip()
+                if line.startswith('graph ') or '-->' in line or line == '':
+                    cleaned_lines.append(line)
+            
+            mermaid_code = '\n'.join(cleaned_lines).strip()
+            
+            if not mermaid_code.startswith('graph '):
+                logger.warning(f"Invalid Mermaid start: {mermaid_code[:50]}")
+                return self._create_fallback_diagram(topic)
+            
+            # node check
+            if '-->' not in mermaid_code:
+                logger.warning("No arrows found in Mermaid code")
+                return self._create_fallback_diagram(topic)
             
             return f"\n\n**Visual Diagram:**\n```mermaid\n{mermaid_code}\n```"
             
         except Exception as e:
             logger.error(f"Diagram generation error: {e}")
-            return None
+            return self._create_fallback_diagram(topic)
+    
+    def _create_fallback_diagram(self, topic: str) -> str:
+        """Create a simple fallback diagram when AI generation fails"""
+        # template based diags for common topics
+        if 'water cycle' in topic.lower():
+            return """
+
+**Visual Diagram:**
+```mermaid
+graph TD
+A[Evaporation] --> B[Condensation]
+B --> C[Precipitation]
+C --> D[Collection]
+D --> A
+```"""
+        elif 'photosynthesis' in topic.lower():
+            return """
+
+**Visual Diagram:**
+```mermaid
+graph LR
+A[Sunlight] --> B[Chlorophyll]
+C[Water] --> B
+D[CO2] --> B
+B --> E[Glucose]
+B --> F[Oxygen]
+```"""
+        else:
+            # generic process diagram
+            return """
+
+**Visual Diagram:**
+```mermaid
+graph TD
+A[Input] --> B[Process]
+B --> C[Output]
+```"""
 
 teacher_agent = TeacherAgent()

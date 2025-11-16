@@ -63,29 +63,77 @@ app = EternaLearnWeb()
 def chat(message, history):
     return app.process_message(message, history)
 
-# simple interface with Mermaid support
+# Premium CSS with smooth animations and perfect contrast
+custom_css = """
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+}
+
+/* Smooth cursor on all interactive elements */
+button, input, textarea {
+    cursor: pointer !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+/* Container styling */
+.gradio-container {
+    max-width: 1000px !important;
+    margin: 0 auto !important;
+}
+
+/* Example buttons hover */
+.examples button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2) !important;
+}
+
+/* Submit button styling */
+button.primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    border: none !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+button.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.35) !important;
+}
+
+/* Message animation */
+.message {
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+"""
+
+# Create simple interface - let Gradio handle Mermaid rendering
 demo = gr.ChatInterface(
     fn=chat,
-    title="EternaLearn - AI Learning Companion",
-    description="""
-    **Your adaptive learning assistant powered by multi-agent AI**
-    
-    **What I can do:**
-    - Explain any topic in detail with visual diagrams
-    - Generate personalized quizzes  
-    - Track your learning progress
-    
-    **Try these:**
-    - "Explain photosynthesis"
-    - "Quiz me on water cycle"
-    - "Show my progress"
-    """,
+    title="EternaLearn",
+    description="AI-Powered Adaptive Learning System · Multi-Agent Intelligence",
     examples=[
         "Explain quantum physics",
         "Explain the water cycle",
         "Quiz me on photosynthesis",
         "Show my progress"
     ],
+    css=custom_css,
+    theme=gr.themes.Soft(
+        primary_hue="indigo",
+        secondary_hue="purple",
+    )
 )
 
 if __name__ == "__main__":
