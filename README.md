@@ -1,14 +1,3 @@
----
-title: EternaLearn
-emoji: 🎓
-colorFrom: blue
-colorTo: purple
-sdk: gradio
-sdk_version: "4.44.1"
-app_file: app.py
-pinned: false
----
-
 # EternaLearn
 
 **AI-Powered Adaptive Learning System**
@@ -532,7 +521,7 @@ This project is licensed under the MIT License. See LICENSE file for complete te
 ## Team & Contact
 
 **Developer**: Anvitha Bhat A
-**Program**: Google Agents Intensive (November 10-14, 2025)  
+**Program**: Google Agents Intensive (november 10-14, 2025)  
 **Track**: Agents for Good  
 
 **Contact Information**:
