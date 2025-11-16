@@ -1,0 +1,41 @@
+# Environment variables (NEVER commit API keys!)
+.env
+.env.local
+.env.*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*.pyo
+*.pyd
+.Python
+venv/
+.venv/
+env/
+ENV/
+*.log
+
+# Data files
+data/
+*.json
+*.db
+*.sqlite
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+*.bak
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
