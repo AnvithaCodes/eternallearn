@@ -63,7 +63,6 @@ app = EternaLearnWeb()
 def chat(message, history):
     return app.process_message(message, history)
 
-# Premium CSS with smooth animations and perfect contrast
 custom_css = """
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
@@ -81,6 +80,48 @@ button, input, textarea {
 .gradio-container {
     max-width: 1000px !important;
     margin: 0 auto !important;
+}
+
+/* Bot message text visibility - LIGHT MODE */
+.gradio-container:not(.dark) .bot.message p,
+.gradio-container:not(.dark) .bot.message h3,
+.gradio-container:not(.dark) .bot.message li,
+.gradio-container:not(.dark) .bot.message span,
+.gradio-container:not(.dark) .bot.message div,
+.gradio-container:not(.dark) .bot.message strong {
+    color: #1a1a1a !important;
+}
+
+/* Bot message text visibility - DARK MODE - NUCLEAR OPTION */
+.dark .message.bot *,
+.dark .bot *,
+.dark [data-testid="bot"] *,
+body.dark .message p,
+body.dark .message span,
+body.dark .message div,
+html.dark .message *,
+.gradio-container.dark * {
+    color: #f0f0f0 !important;
+}
+
+/* Markdown text in dark mode */
+.dark .prose,
+.dark .prose *,
+.dark .markdown-body,
+.dark .markdown-body * {
+    color: #f0f0f0 !important;
+}
+
+/* Markdown headings - LIGHT MODE */
+.gradio-container:not(.dark) .bot.message h3 {
+    color: #667eea !important;
+}
+
+/* Markdown headings - DARK MODE */
+.dark h3,
+.dark .message h3 {
+    color: #a78bfa !important;
+    font-weight: 600 !important;
 }
 
 /* Example buttons hover */
@@ -118,7 +159,6 @@ button.primary:hover {
 }
 """
 
-# Create simple interface - let Gradio handle Mermaid rendering
 demo = gr.ChatInterface(
     fn=chat,
     title="EternaLearn",
@@ -133,8 +173,11 @@ demo = gr.ChatInterface(
     theme=gr.themes.Soft(
         primary_hue="indigo",
         secondary_hue="purple",
-    )
+    ),
 )
+
+# theme switching enabled
+demo.queue()
 
 if __name__ == "__main__":
     demo.launch()
