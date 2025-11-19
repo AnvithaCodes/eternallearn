@@ -531,25 +531,6 @@ This project is licensed under the MIT License. See LICENSE file for complete te
 
 ---
 
-## Acknowledgments
-
-- Google and Kaggle for the Agents Intensive curriculum
-- Open source community for foundational tools and libraries
-- Beta testing participants for feedback and validation
-- Educational professionals for domain expertise
-
----
-
-## Additional Resources
-
-- [Google Agents Intensive Competition](https://www.kaggle.com/competitions/agents-intensive-capstone)
-- [Gemini API Documentation](https://ai.google.dev/docs)
-- [Python Best Practices Guide](https://docs.python-guide.org/)
-- [Multi-Agent Systems Overview](https://en.wikipedia.org/wiki/Multi-agent_system)
-- [Learning Science Research](https://www.learningscientists.org/)
-
----
-
 ## Demonstration
 
 **Video Walkthrough**: [3-Minute System Demo (under construction!)](https://youtube.com/your-demo-video)  
