@@ -476,30 +476,6 @@ gcloud run deploy eternallearn \
 
 ---
 
-## Roadmap
-
-### Phase 1: Q1 2026
-- Multi-language support (Spanish, French, Hindi, Mandarin)
-- Voice interaction capabilities (speech-to-text/text-to-speech)
-- Progressive Web App implementation
-
-### Phase 2: Q2 2026
-- Collaborative learning environments
-- Gamification system with achievements
-- Administrative dashboard for educators
-
-### Phase 3: Q3 2026
-- Native mobile applications (iOS/Android)
-- Learning Management System integrations (Canvas, Moodle, Blackboard)
-- Subject-specific specialized tutors
-
-### Phase 4: Q4 2026
-- WCAG 2.1 AA accessibility compliance
-- Advanced spaced repetition algorithms
-- Peer-to-peer learning marketplace
-
----
-
 ## Contributing
 
 Contributions are welcome. Please follow standard procedures:
@@ -511,27 +487,8 @@ Contributions are welcome. Please follow standard procedures:
 5. Submit Pull Request
 
 ---
-
 ## License
 
 This project is licensed under the MIT License. See LICENSE file for complete terms.
 
 ---
-
-## Team & Contact
-
-**Developer**: Anvitha Bhat A
-**Program**: Google Agents Intensive (november 10-14, 2025)  
-**Track**: Agents for Good  
-
-**Contact Information**:
-- GitHub: [@AnvithaCodes](https://github.com/AnvithaCodes)
-- Email: programmeranvi@gmail.com
-- LinkedIn: [Anvitha Bhat A](https://www.linkedin.com/in/anvitha-bhat-a-6425a3316/)
-
----
-
-## Demonstration
-
-**Video Walkthrough**: [3-Minute System Demo (under construction!)](https://youtube.com/your-demo-video)  
-Comprehensive demonstration of personalized explanations, adaptive assessments, and progress tracking capabilities.
