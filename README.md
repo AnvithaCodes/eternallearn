@@ -171,7 +171,7 @@ This project implements five core concepts from the Google Agents Intensive curr
 
 ```bash
 # Clone repository
-git clone https://github.com/YOUR_USERNAME/eternallearn.git
+git clone https://github.com/AnvithaCodes/eternallearn.git
 cd eternallearn
 
 # create and activate virtual environment
